@@ -1,0 +1,31 @@
+﻿Build started 5/16/2016 11:54:34 AM.
+     1>Project "E:\FCIS\3rd\2nd term\Graphics\Project\OpenGl 3.3 Template\Primitive_Drawing\Primitive_Drawing.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Renderer.cpp
+         Renderer.cpp
+     1>c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY' : macro redefinition
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\gl\glfw3.h(96) : see previous definition of 'APIENTRY'
+     1>e:\fcis\3rd\2nd term\graphics\project\opengl 3.3 template\primitive_drawing\renderer.cpp(34): warning C4305: '=' : truncation from 'double' to 'float'
+     1>e:\fcis\3rd\2nd term\graphics\project\opengl 3.3 template\primitive_drawing\renderer.cpp(225): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>e:\fcis\3rd\2nd term\graphics\project\opengl 3.3 template\primitive_drawing\renderer.cpp(230): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>e:\fcis\3rd\2nd term\graphics\project\opengl 3.3 template\primitive_drawing\renderer.cpp(240): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>e:\fcis\3rd\2nd term\graphics\project\opengl 3.3 template\primitive_drawing\renderer.cpp(250): warning C4305: '-=' : truncation from 'double' to 'float'
+     1>e:\fcis\3rd\2nd term\graphics\project\opengl 3.3 template\primitive_drawing\renderer.cpp(296): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\fcis\3rd\2nd term\graphics\project\opengl 3.3 template\primitive_drawing\renderer.cpp(297): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>e:\fcis\3rd\2nd term\graphics\project\opengl 3.3 template\primitive_drawing\renderer.cpp(350): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\FCIS\3rd\2nd term\Graphics\Project\OpenGl 3.3 Template\Debug\Primitive_Drawing.exe" /INCREMENTAL /NOLOGO opengl32.lib glfw3.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\FCIS\3rd\2nd term\Graphics\Project\OpenGl 3.3 Template\Debug\Primitive_Drawing.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\FCIS\3rd\2nd term\Graphics\Project\OpenGl 3.3 Template\Debug\Primitive_Drawing.lib" /MACHINE:X86 Debug\ApplicationManager.obj
+         Debug\Camera.obj
+         Debug\main.obj
+         Debug\Model.obj
+         Debug\objloader.obj
+         Debug\Renderer.obj
+         Debug\shader.obj
+         Debug\stb_image.obj
+         Debug\texture.obj
+         Primitive_Drawing.vcxproj -> E:\FCIS\3rd\2nd term\Graphics\Project\OpenGl 3.3 Template\Debug\Primitive_Drawing.exe
+     1>Done Building Project "E:\FCIS\3rd\2nd term\Graphics\Project\OpenGl 3.3 Template\Primitive_Drawing\Primitive_Drawing.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.75

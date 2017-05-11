@@ -1,0 +1,28 @@
+#version 330 core
+layout(location = 0) in vec3 vertexPosition_modelspace; //this variable will catch the position.
+layout(location = 1) in vec3 vertexColor; //this variable will catch the color.
+layout(location = 2) in vec2 textureCoord;  // texture
+layout(location = 3) in vec3 vertexNormal_modelspace;// light
+
+out vec3 Color;
+out vec2 TextureCoord;
+out vec3 normal_worldspace;
+out vec3 position_worldspace;
+
+uniform mat4 MVP;
+uniform mat4 ModelMatrix;
+
+void main(){
+	// Output position of the vertex, in clip space : MVP * position
+
+	gl_Position =  MVP * vec4(vertexPosition_modelspace,1);
+	
+	position_worldspace = vec3(ModelMatrix * vec4(vertexPosition_modelspace,1));
+	
+	// see transforming normals part in the handout to see if "ModelMatrix" is the valid model matrix for all transformation types of the normals.
+	normal_worldspace = normalize(vec3(ModelMatrix * vec4(vertexNormal_modelspace,0))); // zero homogenoues coordinate for not translating the normals (see transforming normals part in the handout)
+	
+	Color =  vertexColor;
+
+	TextureCoord = textureCoord;
+}

@@ -1,0 +1,56 @@
+#version 330 core
+
+out vec3 color; // final color
+in vec2 TextureCoord;
+uniform vec3 Colors;
+uniform int RenderingMode;
+uniform sampler2D TextureSample;
+
+in vec3 position_worldspace;
+in vec3 normal_worldspace;
+
+// The following uniform variables are sent from the c++ code and constant for the whole fragments
+uniform vec3 LightPosition_worldspace; // The point where the point light source is located (the Orange point in page4 inside the handout)
+uniform vec3 EyePosition_worldspace; // The position where the camera is located "camera position" (the Blue point in page4 inside the handout)
+uniform vec3 ambientLight;
+
+void main()
+{
+	float intensity = 0.5;
+	float attenuation = 0.2f;
+	float ambientCoefficient = 0.005f;
+	vec3 gamma = vec3(1.0/2.2);
+
+	// Diffuse light calculations.
+	vec3 lightVector = normalize(LightPosition_worldspace - position_worldspace); // vector to light (the Orange vector in page4 inside the handout)
+	float brightness = dot(lightVector,normal_worldspace); 
+	vec3 diffuseLight = vec3(brightness,brightness,brightness) * intensity;
+	diffuseLight = clamp(diffuseLight,0,1); // make sure the value is between 0 and 1 (not negative)
+
+	//Specular light calculations.
+	vec3 reflectedLightVector = reflect(-lightVector,normal_worldspace);  // reflection vector (the Green vector in page4 inside the handout)
+	vec3 eyeDirectionVector = normalize(EyePosition_worldspace - position_worldspace); // vector to eye (the Blue vector in page4 inside the handout)
+	float specularity = dot(reflectedLightVector,eyeDirectionVector);
+	float specularExponent = 10;
+	specularity = pow(specularity,specularExponent);
+	vec3 specularLight = vec3(specularity,specularity,specularity) * intensity;
+	specularLight = clamp(specularLight,0,1);
+
+	vec3 AmbientLight = ambientCoefficient * ambientLight * intensity;
+	AmbientLight = clamp(AmbientLight, 0, 1);
+
+	color = AmbientLight  + attenuation*(diffuseLight + specularLight);	
+	color = vec3(pow(color, gamma));
+
+	//1) calculate fragment color from sent color only.
+	if(RenderingMode == 0)
+		color += Colors;
+	
+	//2) calculate fragment color from sample extracted by the sampler.
+	else if(RenderingMode == 1)
+		color += texture( TextureSample, TextureCoord ).rgb;
+	
+	//3) calculate fragment color by combining the fragment color and the texture sample.
+	else if(RenderingMode == 2)
+		color += texture(TextureSample, TextureCoord).rgb + Colors;
+}
